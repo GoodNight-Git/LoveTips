@@ -1,0 +1,43 @@
+#card-con{
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+}
+#card-con .line-con{
+  /* width: 70rem;
+  height: 200rem; */
+  padding:0;
+  margin:0;
+}
+#card-con .line-con image{
+  width: 35px;
+  height: 100px;
+}
+#card-con .content-con{
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  border:3px solid #000000;
+}
+#card-con .content-con van-image{
+  margin:0.5rem;
+}
+#card-con .content-con .text-con{
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  width: 12rem;
+  padding:0.5rem;
+}
+#card-con .content-con .text-con .title{
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 2.5rem;
+  color:#000000;
+}
+#card-con .content-con .text-con .price{
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1rem;
+  color:red;
+}
