@@ -1,18 +1,24 @@
+
 <template name="cardTemp">
 <view id="card-con">
-  <view class="line-con">
+  <!-- <view class="line-con">
     <image src="../../../../../images/line.png"></image>
-  </view>
+  </view> -->
   <view class="content-con">
-    <van-image
-      round
-      width="5rem"
-      height="5rem"
-      src="../../../../../images/logo.jpg"
-    />
+    <view class="image-con">
+      <van-image
+          round
+          fit="cover"
+          width="4rem"
+          height="4rem"
+          src="{{item.images[0]}}"
+        />
+    </view>
+    
     <view class="text-con">
-      <text class="title">test</text>
-      <text class="price">test</text>
+      <text class="time">{{item.time}}</text>
+      <text class="name">{{item.name}}</text>
+      <text class="price">гд{{item.price}}</text>
     </view>
   </view>
 </view>

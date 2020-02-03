@@ -1,18 +1,24 @@
 // pages/index.js
+var dataList = require('../../config/example.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    imageURL:"../../images/logo.jpg"
+    imageURL:"../../images/logo.jpg",
+    exampleData: dataList.dataExampleList
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // this.setData({
+    //   exampleData:dataList.dataExampleList
+    // })
+    console.log(dataList.dataExampleList)
   },
 
   /**

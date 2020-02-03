@@ -1,2 +1,5 @@
 /* pages/index.wxss */
 @import "../template/card/card.wxss";
+page{
+  /* background-color: #eea2a4; */
+}

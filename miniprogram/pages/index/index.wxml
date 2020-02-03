@@ -1,11 +1,5 @@
 <!--pages/index.wxml-->
 <import src="../template/card/card.wxml" />
-<template is="cardTemp"></template>
-<van-button type="info">默认按钮</van-button>
-<van-card
-  num="2"
-  price="2.00"
-  desc="描述信息"
-  title="商品标题"
-  thumb="{{ imageURL }}"
-/>
+<block wx:for="{{exampleData}}" wx:for-item="item" wx:for-index="index">
+    <template is="cardTemp" data="{{item:item,index:index}}"></template>
+</block>

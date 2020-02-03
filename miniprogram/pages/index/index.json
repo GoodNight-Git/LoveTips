@@ -1,3 +1,10 @@
 {
-  "usingComponents": {}
+  "usingComponents": {},
+  "window": {
+    "backgroundColor": "#eea2a4",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#eea2a4",
+    "navigationBarTitleText": "爱的心愿贴",
+    "navigationBarTextStyle": "white"
+  }
 }
