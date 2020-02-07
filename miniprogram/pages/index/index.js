@@ -1,7 +1,7 @@
 // pages/index.js
 var dataList = require('../../config/example.js');
 var colorsList = require('../../config/color.js');
-// var io_manager = require('../../logic/io_manager.js');
+import Toast from '../../dist/toast/toast';
 import {io_manager} from '../../logic/io_manager.js';
 Page({
 
@@ -9,12 +9,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    topActive: "all", //上面标签栏
+    topActive: "completing", //上面标签栏
     active: 0, //下面标签页
     imageURL: "../../images/logo.jpg",
     exampleData: dataList.dataExampleList,
     selfInfo: dataList.selfInfo,
     colorsData: colorsList.colors,
+    popup_show:false
     // fontFamily: 'Muyao-Softbrush',
   },
 
@@ -25,17 +26,18 @@ Page({
   },
   onChangeBar(event) {
     // event.detail 的值为当前选中项的索引
+    var that = this;
     var detail = event.detail;
+    
     this.setData({
       active: event.detail
     });
     if(detail==1){
-      wx.redirectTo({
-        url: ''
-      })
+      var popup_show = this.data.popup_show;
+      
     } else if (detail == 2){
       wx.redirectTo({
-        url: ''
+        url: '../me/me'
       })
     }
   },
@@ -59,6 +61,44 @@ Page({
         break;
     }
   },
+  sexToast:function(){
+    var self = this.data.selfInfo.sex;
+    if(self=="male"){
+      Toast('这是她的心愿喔~');
+    }else{
+      Toast('这是他的心愿喔~');
+    }
+  },
+  completedToast:function(){
+    Toast('这是一个已完成的心愿~');
+  },
+  addClick:function(){
+    var that = this;
+    var popup_show = this.data.popup_show;
+    this.setData({
+      popup_show: !popup_show
+    })
+    if (this.data.popup_show == false) {
+      that.setData({
+        active: 0
+      });
+    }
+  },
+  onPopupClose:function(){
+    this.setData({
+      popup_show: false
+    })
+  },
+  toAddDream:function(){
+    wx.navigateTo({
+      url: '../addDream/addDream'
+    })
+  },
+  toGetDream:function(){
+    wx.navigateTo({
+      url: '../getDream/getDream'
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -70,7 +110,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    this.setData({
+      popup_show: false,
+      active: 0
+    });
   },
 
   /**

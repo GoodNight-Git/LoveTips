@@ -1,6 +1,9 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/addDream/addDream",
+    "pages/getDream/getDream",
+    "pages/me/me"
   ],
   "window": {
     "backgroundColor": "#ff9994",
@@ -18,7 +21,9 @@
     "van-cell": "dist/cell/index",
     "van-cell-group": "dist/cell-group/index",
     "van-swipe-cell": "dist/swipe-cell/index",
-    "van-popup": "dist/popup/index"
+    "van-popup": "dist/popup/index",
+    "van-toast": "dist/toast/index",
+    "van-uploader": "dist/uploader/index"
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"

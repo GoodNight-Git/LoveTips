@@ -1,10 +1,10 @@
 <template name="cardTemp">
-  <van-swipe-cell right-width="{{ 60 }}" left-width="{{ 60 }}">
+  <van-swipe-cell right-width="{{ item.completed==0?110:0 }}" left-width="{{ 60 }}">
     <view slot="left">
       <view class="slot-con">
         <view class="slot-cell">
-          <van-image fit="cover" width="2rem" height="2rem" src="../../images/icon/completed@40.svg" />
-          <text class="completed-text">完成</text>
+          <van-image fit="cover" width="2rem" height="2rem" src="../../images/icon/del@40.svg" />
+          <text class="common-text">删除</text>
         </view>
       </view>
     </view>
@@ -21,23 +21,28 @@
         </view>
         <view class="icon-con">
           <view wx:if="{{selfInfo.sex=='female'&&item.self==0}}">
-            <van-image fit="cover" width="2.5rem" height="2.5rem" src="../../images/icon/male@50.svg" />
+            <van-image class="sex-icon" fit="cover" width="2.5rem" height="2.5rem" src="../../images/icon/male@50.svg" bindtap="sexToast" />
           </view>
           <view wx:elif="{{selfInfo.sex=='male'&&item.self==0}}">
-            <van-image fit="cover" width="2.5rem" height="2.5rem" src="../../images/icon/female@50.svg" />
+            <van-image class="sex-icon" fit="cover" width="3rem" height="3rem" src="../../images/icon/female@50.svg" bindtap="sexToast" />
           </view>
           <view wx:elif="{{item.self==1}}">
-
           </view>
-
+          <view wx:if="{{item.completed==1}}">
+            <van-image class="completed-icon" fit="cover" width="2.5rem" height="2.5rem" src="../../images/icon/gou@50.svg" bindtap="completedToast" />
+          </view>
         </view>
       </view>
     </view>
     <view slot="right">
       <view class="slot-con">
         <view class="slot-cell">
-          <van-image fit="cover" width="2rem" height="2rem" src="../../images/icon/del@40.svg" />
-          <text class="del-text">删除</text>
+          <van-image fit="cover" width="2rem" height="2rem" src="../../images/icon/edit@40.svg" />
+          <text class="common-text">编辑</text>
+        </view>
+        <view class="slot-cell">
+          <van-image fit="cover" width="2rem" height="2rem" src="../../images/icon/completed@40.svg" />
+          <text class="completed-text">完成</text>
         </view>
       </view>
     </view>

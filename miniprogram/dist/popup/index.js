@@ -19,9 +19,10 @@ VantComponent({
             type: String,
             observer: 'observeClass'
         },
+        //原来是z-index:100,现被spy-xxx改为1
         zIndex: {
             type: Number,
-            value: 100
+            value: 1
         },
         overlay: {
             type: Boolean,

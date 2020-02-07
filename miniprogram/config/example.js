@@ -2,7 +2,8 @@ var colorsList = require('color.js');
 var self = {
   name:'SPY-xxx',
   sex:'female',
-  logo:"../../images/logo.jpg"
+  logo:"../../images/logo.jpg",
+  linked:1
 };
 var list = [{
   id: 1,

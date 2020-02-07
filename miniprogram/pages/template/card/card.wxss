@@ -46,7 +46,18 @@ page{
   color:#ed556a;
 }
 #card-con .content-con .icon-con{
+  position: relative;
   width: 2.5rem;
+}
+#card-con .content-con .icon-con .sex-icon{
+  position: absolute;
+  top:0;
+  right: 0;
+}
+#card-con .content-con .icon-con .completed-icon{
+  position: absolute;
+  bottom:0;
+  right: 0;
 }
 .slot-con{
   display: flex;
@@ -70,6 +81,6 @@ page{
 .slot-con .slot-cell .completed-text{
   color:#ed556a;
 }
-.slot-con .slot-cell .del-text{
+.slot-con .slot-cell .common-text{
   color:#2c2c2c;
 }
