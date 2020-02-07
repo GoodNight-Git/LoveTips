@@ -1,8 +1,8 @@
 <template name="tabbarTemp">
   <van-popup show="{{ popup_show }}" round position="bottom" custom-style="height: 35%;bottom:50px;border-top:2px solid #2c2c2c;border-radius:1.5rem 1.5rem 0 0;" bind:close="onPopupClose">
     <view class="dreamCard-con">
-      <view class="newDream-con {{selfInfo.sex=='male'?'male-con':'female-con'}}" bindtap="toAddDream">
-        <view class="sex-con male-icon" wx:if="{{selfInfo.sex=='male'}}">
+      <view class="newDream-con {{selfInfo.sex=='m'?'male-con':'female-con'}}" bindtap="toAddDream">
+        <view class="sex-con male-icon" wx:if="{{selfInfo.sex=='m'}}">
           <van-image fit="cover" width="3rem" height="3rem" src="../../images/icon/male@50.svg" bindtap="sexToast" />
         </view>
         <view class="sex-con" wx:else>
@@ -15,18 +15,18 @@
         我的愿望
         </text>
       </view>
-      <view class="newDream-con {{selfInfo.sex=='female'?'male-con':'female-con'}} {{selfInfo.linked==0?'noDream-con':''}}" bindtap="toGetDream">
-        <view class="sex-con male-icon" wx:if="{{selfInfo.sex=='female'&&selfInfo.linked==1}}">
+      <view class="newDream-con {{otherInfo.sex=='m'?'male-con':'female-con'}} {{selfInfo.linked?'':'noDream-con'}}" bindtap="toGetDream">
+        <view class="sex-con male-icon" wx:if="{{otherInfo.sex=='m'&&selfInfo.linked}}">
           <van-image fit="cover" width="3rem" height="3rem" src="../../images/icon/male@50.svg" bindtap="sexToast" />
         </view>
-        <view class="sex-con" wx:elif="{{selfInfo.sex=='male'&&selfInfo.linked==1}}">
+        <view class="sex-con" wx:elif="{{otherInfo.sex=='f'&&selfInfo.linked}}">
           <van-image fit="cover" width="3.5rem" height="3.5rem" src="../../images/icon/female@50.svg" bindtap="sexToast" />
         </view>
-        <text wx:if="{{selfInfo.linked==1}}">
+        <text wx:if="{{selfInfo.linked}}">
             抽取
           </text>
-        <text wx:if="{{selfInfo.linked==1}}">
-          {{selfInfo.sex=='male'?'她':'他'}}的愿望
+        <text wx:if="{{selfInfo.linked}}">
+          {{otherInfo.sex=='f'?'她':'他'}}的愿望
           </text>
       </view>
     </view>

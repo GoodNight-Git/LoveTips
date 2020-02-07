@@ -1,5 +1,5 @@
 <template name="cardTemp">
-  <van-swipe-cell right-width="{{ item.completed==0?110:0 }}" left-width="{{ 60 }}">
+  <van-swipe-cell right-width="{{ item.completed?0:110 }}" left-width="{{ 60 }}">
     <view slot="left">
       <view class="slot-con">
         <view class="slot-cell">
@@ -15,20 +15,20 @@
         </view>
 
         <view class="text-con">
-          <text class="time">{{item.time}}</text>
+          <text class="time">{{item.createdTime}}</text>
           <text class="name">{{item.name}}</text>
           <text class="price">￥{{item.price}}</text>
         </view>
         <view class="icon-con">
-          <view wx:if="{{selfInfo.sex=='female'&&item.self==0}}">
+          <view wx:if="{{otherInfo.sex=='m'&&!item.self}}">
             <van-image class="sex-icon" fit="cover" width="2.5rem" height="2.5rem" src="../../images/icon/male@50.svg" bindtap="sexToast" />
           </view>
-          <view wx:elif="{{selfInfo.sex=='male'&&item.self==0}}">
+          <view wx:elif="{{otherInfo.sex=='f'&&!item.self}}">
             <van-image class="sex-icon" fit="cover" width="3rem" height="3rem" src="../../images/icon/female@50.svg" bindtap="sexToast" />
           </view>
-          <view wx:elif="{{item.self==1}}">
+          <view wx:elif="{{item.self}}">
           </view>
-          <view wx:if="{{item.completed==1}}">
+          <view wx:if="{{item.completed}}">
             <van-image class="completed-icon" fit="cover" width="2.5rem" height="2.5rem" src="../../images/icon/gou@50.svg" bindtap="completedToast" />
           </view>
         </view>

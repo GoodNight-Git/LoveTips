@@ -1,8 +1,10 @@
 //app.js
-import { io_manager } from 'logic/io_manager.js';
+import {
+  io_manager
+} from 'logic/io_manager.js';
 App({
-  onLaunch: function () {
-    
+  onLaunch: function() {
+
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
     } else {
@@ -28,15 +30,17 @@ App({
           console.log('字体加载成功')
           console.log(res.status)
         },
-        fail: function (res) {
+        fail: function(res) {
           console.log('字体加载失败')
           console.log(res.status)
         },
-        complete: function (res) {
+        complete: function(res) {
           console.log('字体加载完成')
           console.log(res.status)
         }
       });
     });
-  }
+
+  },
+
 })

@@ -3,7 +3,9 @@ var dataList = require('../../config/example.js');
 var colorsList = require('../../config/color.js');
 var settingList = require('../../config/setting.js');
 import Toast from '../../dist/toast/toast';
-import {io_manager} from '../../logic/io_manager.js';
+import {
+  io_manager
+} from '../../logic/io_manager.js';
 Page({
 
   /**
@@ -15,10 +17,18 @@ Page({
     currentData: 0,
     imageURL: "../../images/logo.jpg",
     exampleData: dataList.dataExampleList,
-    selfInfo: dataList.selfInfo,
+    selfInfo: {
+      name: '游客',
+      sex: 'f', //f女，m男，u未知
+      logo: "../../images/logo.jpg",
+      linked: false
+    },
+    otherInfo: dataList.otherInfo,
     colorsData: colorsList.colors,
-    settingList:settingList.settings,
-    popup_show:false
+    settingList: settingList.settings,
+    popup_show: false,
+    canUse: false, //判断是否授权登陆
+    // canIUse: wx.canIUse('button.open-type.getUserInfo')
     // fontFamily: 'Muyao-Softbrush',
   },
 
@@ -26,19 +36,81 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    var that = this;
+    var res = wx.getStorageInfoSync();
+    console.log(res.keys)
+    if (res.keys.indexOf('selfInfo') == -1) {
+      // var new_settings = that.data.settingList.filter((item, index) => index != 1);
+      that.setData({
+        canUse: false,
+        // settingList:new_settings,
+        selfInfo: {
+          name: '游客',
+          sex: 'f', //f女，m男，u未知
+          logo: "../../images/logo.jpg",
+          linked: false
+        }
+      })
+    } else {
+      var self = wx.getStorageSync('selfInfo');
+      // var new_settings =[];
+      // if(self.linked){
+      //   new_settings = that.data.settingList;
+      // }else{
+      //   new_settings = that.data.settingList.filter((item, index) => index != 1);
+      // }
+      that.setData({
+        canUse: true,
+        selfInfo: self,
+        // settingList: new_settings
+      })
+
+    }
+
+  },
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function() {
+    // var self = wx.getStorageSync('selfInfo');
+    // var canUse = wx.getStorageSync('canUse');
+    // console.log(self)
+    this.setData({
+      popup_show: false,
+      active: 0,
+      currentData: 0,
+      // selfInfo:self,
+      // canUse:canUse
+    });
+  },
+  bindGetUserInfo(e) {
+    var that = this;
+    var self = this.data.selfInfo;
+    var info = e.detail.userInfo;
+    self.name = info.nickName;
+    self.sex = (info.gender == 1 ? 'n' : 'f');
+    self.logo = info.avatarUrl;
+    self.linked = true;
+    that.setData({
+      selfInfo: self,
+      canUse: true
+    });
+    wx.setStorageSync('selfInfo', self);
+    console.log(e.detail.userInfo)
+    this.onLoad();
   },
   onChangeBar(event) {
     // event.detail 的值为当前选中项的索引
     var that = this;
     var detail = event.detail;
-    
+
     this.setData({
       active: event.detail,
       currentData: event.detail,
     });
-    if (detail == 0 || detail == 2){
+    if (detail == 0 || detail == 2) {
       this.setData({
-        popup_show:false,
+        popup_show: false,
         active: event.detail,
         currentData: event.detail,
       });
@@ -65,24 +137,24 @@ Page({
     }
   },
   //取消swiper的滑动操作
-  stopTouchMove(event){
+  stopTouchMove(event) {
     return false;
   },
   //点击右上角头像
-  sexToast:function(){
-    var self = this.data.selfInfo.sex;
-    if(self=="male"){
-      Toast('这是她的心愿喔~');
-    }else{
+  sexToast: function() {
+    var self = this.data.otherInfo.sex;
+    if (self == "m") {
       Toast('这是他的心愿喔~');
+    } else {
+      Toast('这是她的心愿喔~');
     }
   },
   //点击右下角花朵图像
-  completedToast:function(){
+  completedToast: function() {
     Toast('这是一个已完成的心愿~');
   },
   //点击下方中间添加按钮
-  addClick:function(){
+  addClick: function() {
     var that = this;
     var popup_show = this.data.popup_show;
     this.setData({
@@ -91,21 +163,21 @@ Page({
     if (this.data.popup_show == false) {
       that.setData({
         active: 0,
-        currentData:0
+        currentData: 0
       });
     }
   },
-  onPopupClose:function(){
+  onPopupClose: function() {
     this.setData({
       popup_show: false
     })
   },
-  toAddDream:function(){
+  toAddDream: function() {
     wx.navigateTo({
       url: '../addDream/addDream'
     })
   },
-  toGetDream:function(){
+  toGetDream: function() {
     wx.navigateTo({
       url: '../getDream/getDream'
     })
@@ -117,15 +189,7 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-    this.setData({
-      popup_show: false,
-      active: 0
-    });
-  },
+
 
   /**
    * 生命周期函数--监听页面隐藏

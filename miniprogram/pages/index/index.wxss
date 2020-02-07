@@ -1,7 +1,8 @@
 /* pages/index.wxss */
 @import "../template/card/card.wxss";
 @import "../template/tabbar/tabbar.wxss";
-@import "../template/sm-card/sm-card.wxss";
+/* @import "../template/sm-card/sm-card.wxss"; */
+
 page {
   font-family: "Muyao-Softbrush";
   background-color: #faeeea;
@@ -17,10 +18,92 @@ van-tab {
   flex-direction: column;
   align-items: center;
 }
-swiper{
+
+swiper {
   width: 100%;
   height: 35rem;
 }
+
+#me-con {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#me-con .user-con {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  margin-top: 2rem;
+}
+#me-con .user-con .single-user-con{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 7rem;
+}
+
+#me-con .user-con .love-con{
+  line-height: 5rem;
+}
+#me-con .user-con .logo-con {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  border: 2px solid #2c2c2c;
+  margin-bottom: 1rem;
+}
+
+#me-con .user-con .logo-con image {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+}
+/* #me-con .user-con  */
+#me-con .user-con text {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2c2c2c;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+
+#me-con .user-con button {
+  /* background-color: #fbdbc9; */
+  width: 6rem;
+  border: 2px solid #2c2c2c;
+  height: 6rem;
+  border-radius: 50%;
+  padding: 0;
+  margin: 0;
+  line-height: 6rem;
+}
+
+#me-con .user-con .using_show_text {
+  line-height: 5rem;
+}
+
+#me-con .btn-con {
+  margin-top: 1rem;
+}
+
+#me-con .btn-con .btn-line {
+  border-top: 2px dashed #2c2c2c;
+  margin: 0 15px 1rem 15px;
+}
+
+/* #me-con .btn-con .btn-line #dashed-line{
+
+} */
+
+/* van-grid-item{
+  border:1px solid #000;
+} */
+
 /* .addCard-con {
   width: 22.2rem;
   height: 5rem;

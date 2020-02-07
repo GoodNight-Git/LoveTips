@@ -1,7 +1,7 @@
 <!--pages/index.wxml-->
 <import src="../template/card/card.wxml" />
 <import src="../template/tabbar/tabbar.wxml" />
-<import src="../template/sm-card/sm-card.wxml" />
+<!-- <import src="../template/sm-card/sm-card.wxml" /> -->
 <view id="index-con">
   <van-toast id="van-toast" />
   <swiper current="{{currentData}}" bindchange='swiperChange'>
@@ -9,8 +9,14 @@
       <van-tabs active="{{ topActive }}" sticky="true" animated="true" color="#ff9994" line-height="2px">
         <van-tab title="未完成" name="completing">
           <block wx:for="{{exampleData}}" wx:for-item="item" wx:for-index="index" wx:key="id">
-            <view wx:if="{{item.completed==0}}">
-              <template is="cardTemp" data="{{item:item,index:index,selfInfo:selfInfo}}"></template>
+            <view wx:if="{{!item.completed&&!item.del}}">
+              <view wx:if="{{!selfInfo.linked}}">
+                <template wx:if="{{item.self}}" is="cardTemp" data="{{item:item,index:index,otherInfo:otherInfo}}"></template>
+              </view>
+              <view wx:else>
+                <template is="cardTemp" data="{{item:item,index:index,otherInfo:otherInfo}}"></template>
+              </view>
+
             </view>
           </block>
           <!-- <view class="addCard-con">
@@ -20,8 +26,14 @@
         <!-- <van-tab title="{{selfInfo.sex=='male'?'她':'他'}}的" name="your"> -->
         <van-tab title="已完成" name="completed">
           <block wx:for="{{exampleData}}" wx:for-item="item" wx:for-index="index" wx:key="id">
-            <view wx:if="{{item.completed==1}}">
-              <template is="cardTemp" data="{{item:item,index:index,selfInfo:selfInfo}}"></template>
+            <view wx:if="{{item.completed&&!item.del}}">
+              <view wx:if="{{!selfInfo.linked}}">
+                <template wx:if="{{item.self}}" is="cardTemp" data="{{item:item,index:index,otherInfo:otherInfo}}"></template>
+              </view>
+              <view wx:else>
+                <template is="cardTemp" data="{{item:item,index:index,otherInfo:otherInfo}}"></template>
+              </view>
+
             </view>
           </block>
           <!-- <view class="addCard-con">
@@ -30,7 +42,14 @@
         </van-tab>
         <van-tab title="全部" name="all">
           <block wx:for="{{exampleData}}" wx:for-item="item" wx:for-index="index" wx:key="id">
-            <template is="cardTemp" data="{{item:item,index:index,selfInfo:selfInfo}}"></template>
+            <view wx:if="{{!item.del}}">
+              <view wx:if="{{!selfInfo.linked}}">
+                <template wx:if="{{item.self}}" is="cardTemp" data="{{item:item,index:index,otherInfo:otherInfo}}"></template>
+              </view>
+              <view wx:else>
+                <template is="cardTemp" data="{{item:item,index:index,otherInfo:otherInfo}}"></template>
+              </view>
+            </view>
           </block>
           <!-- <view class="addCard-con">
         <text>+添加一个愿望</text>
@@ -40,17 +59,48 @@
     </swiper-item>
     <swiper-item></swiper-item>
     <swiper-item catchtouchmove="stopTouchMove">
-      <van-grid column-num="3" border="{{ false }}" gutter="{{ 15 }}">
-        <block wx:for="{{settingList}}" wx:for-item="item" wx:for-index="index" wx:key="title">
-          <van-grid-item use-slot>
-          <van-image fit="cover" width="2.5rem" height="2.5rem" src="{{item.icon}}" />
-            <text>{{item.title}}</text>
-          </van-grid-item>
-        </block>
+      <view id="me-con">
+        <view class="user-con">
+          <view class="single-user-con" wx:if="{{canUse}}">
+            <view class="logo-con">
+              <image src="{{selfInfo.logo}}" />
+            </view>
+            <!-- <view class="text-con"> -->
+              <text>{{selfInfo.name}}</text>
+            <!-- </view> -->
+          </view>
+          <view class="love-con" wx:if="{{canUse&&selfInfo.linked}}">
+            <image style="width:3rem;height:3rem;" src="../../images/icon/love@50.svg"/>
+          </view>
+          <view class="single-user-con" wx:if="{{canUse&&selfInfo.linked}}">
+            <view class="logo-con">
+              <image src="{{otherInfo.logo}}" />
+            </view>
+            <!-- <view class="text-con"> -->
+              <text>{{otherInfo.name}}</text>
+            <!-- </view> -->
+          </view>
+          <button wx:if="{{!canUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
+            点击登录
+          </button>
+        </view>
+        <view class="btn-con">
+          <view class="btn-line">
+          </view>
+          <van-grid column-num="3" border="{{ false }}" gutter="{{ 15 }}">
+            <block wx:for="{{settingList}}" wx:for-item="item" wx:for-index="index" wx:key="title">
+              <van-grid-item use-slot>
+                <van-image fit="cover" width="2.5rem" height="2.5rem" src="{{item.icon}}" />
+                <text>{{item.title}}</text>
+              </van-grid-item>
+            </block>
+          </van-grid>
+        </view>
 
-      </van-grid>
+      </view>
+
 
     </swiper-item>
   </swiper>
-  <template is="tabbarTemp" data="{{active:active,popup_show:popup_show,selfInfo:selfInfo}}"></template>
+  <template is="tabbarTemp" data="{{active:active,popup_show:popup_show,selfInfo:selfInfo,otherInfo:otherInfo}}"></template>
 </view>
