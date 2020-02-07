@@ -25,7 +25,9 @@
     "van-toast": "dist/toast/index",
     "van-uploader": "dist/uploader/index",
     "van-grid": "dist/grid/index",
-    "van-grid-item": "dist/grid-item/index"
+    "van-grid-item": "dist/grid-item/index",
+    "van-row": "dist/row/index",
+    "van-col": "dist/col/index"
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"

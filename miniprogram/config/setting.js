@@ -12,7 +12,6 @@ if (res.keys.indexOf('selfInfo') == -1) {
 
 } else {
   selfInfo = wx.getStorageSync('selfInfo');
-
 }
 var settings = [{
   title: "与" + (selfInfo.linked ? ((temp.otherInfo.sex == 'm' ? '他' : '她') + '解绑') : ((selfInfo.sex == 'm' ? '她' : '他') + '绑定')),

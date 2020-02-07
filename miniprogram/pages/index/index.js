@@ -25,7 +25,8 @@ Page({
     },
     otherInfo: dataList.otherInfo,
     colorsData: colorsList.colors,
-    settingList: settingList.settings,
+    // settingList: settingList.settings,
+    settingList:[],
     popup_show: false,
     canUse: false, //判断是否授权登陆
     // canIUse: wx.canIUse('button.open-type.getUserInfo')
@@ -36,68 +37,134 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    console.log('loading')
     var that = this;
     var res = wx.getStorageInfoSync();
+    var otherInfo = this.data.otherInfo;
     console.log(res.keys)
+    console.log(res.keys.indexOf('selfInfo'))
+    console.log(this.data.selfInfo)
     if (res.keys.indexOf('selfInfo') == -1) {
-      // var new_settings = that.data.settingList.filter((item, index) => index != 1);
+      var selfInfo = {
+        name: '游客',
+        sex: 'f', //f女，m男，u未知
+        logo: "../../images/logo.jpg",
+        linked: false
+      }
       that.setData({
         canUse: false,
-        // settingList:new_settings,
-        selfInfo: {
-          name: '游客',
-          sex: 'f', //f女，m男，u未知
-          logo: "../../images/logo.jpg",
-          linked: false
-        }
+        selfInfo: selfInfo
+      })
+      // var new_settings = [];
+      var settings = [{
+        title: "与" + (selfInfo.linked ? ((otherInfo.sex == 'm' ? '他' : '她') + '解绑') : ((selfInfo.sex == 'm' ? '她' : '他') + '绑定')),
+        icon: "../../images/icon/link@50.svg"
+      }, {
+        title: (otherInfo.sex == 'm' ? '他' : '她') + "的愿望",
+        icon: "../../images/icon/otherDream@50.svg"
+      }, {
+        title: "历史轨迹",
+        icon: "../../images/icon/history@50.svg"
+      }, {
+        title: "心愿回收",
+        icon: "../../images/icon/bin@50.svg"
+      }, {
+        title: "使用帮助",
+        icon: "../../images/icon/qa@50.svg"
+      }, {
+        title: "关于我们",
+        icon: "../../images/icon/gou@50.svg"
+      }];
+      that.setData({
+        settingList: settings.filter((item, index) => index != 1)
       })
     } else {
-      var self = wx.getStorageSync('selfInfo');
-      // var new_settings =[];
-      // if(self.linked){
-      //   new_settings = that.data.settingList;
-      // }else{
-      //   new_settings = that.data.settingList.filter((item, index) => index != 1);
-      // }
+      var selfInfo = wx.getStorageSync('selfInfo');
       that.setData({
         canUse: true,
         selfInfo: self,
-        // settingList: new_settings
       })
+      var new_settings = [];
+      var settings = [{
+        title: "与" + (selfInfo.linked ? ((otherInfo.sex == 'm' ? '他' : '她') + '解绑') : ((selfInfo.sex == 'm' ? '她' : '他') + '绑定')),
+        icon: "../../images/icon/link@50.svg"
+      }, {
+        title: (otherInfo.sex == 'm' ? '他' : '她') + "的愿望",
+        icon: "../../images/icon/otherDream@50.svg"
+      }, {
+        title: "历史轨迹",
+        icon: "../../images/icon/history@50.svg"
+      }, {
+        title: "心愿回收",
+        icon: "../../images/icon/bin@50.svg"
+      }, {
+        title: "使用帮助",
+        icon: "../../images/icon/qa@50.svg"
+      }, {
+        title: "关于我们",
+        icon: "../../images/icon/gou@50.svg"
+      }];
+
+      if (selfInfo.linked) {
+        new_settings = settings;
+        that.setData({
+          settingList: new_settings
+        })
+        console.log(that.data.settingList)
+      } else {
+        new_settings = settings.filter((item, index) => index != 1);
+        that.setData({
+          settingList: new_settings
+        })
+        console.log(that.data.settingList)
+      }
+      // that.setData({
+      //   settingList: new_settings
+      // })
 
     }
-
+    // console.log(that.data.settingList)
   },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    // var self = wx.getStorageSync('selfInfo');
-    // var canUse = wx.getStorageSync('canUse');
-    // console.log(self)
+    console.log('showing')
+    var that = this;
+    var selfInfo = wx.getStorageSync('selfInfo');
     this.setData({
       popup_show: false,
       active: 0,
       currentData: 0,
-      // selfInfo:self,
+      selfInfo:selfInfo
       // canUse:canUse
     });
   },
   bindGetUserInfo(e) {
     var that = this;
-    var self = this.data.selfInfo;
+    var selfInfo = {
+      name: '游客',
+      sex: 'f', //f女，m男，u未知
+      logo: "../../images/logo.jpg",
+      linked: false
+    };
+    console.log(selfInfo)
+    var otherInfo = this.data.otherInfo;
     var info = e.detail.userInfo;
-    self.name = info.nickName;
-    self.sex = (info.gender == 1 ? 'n' : 'f');
-    self.logo = info.avatarUrl;
-    self.linked = true;
+    console.log(e.detail.userInfo)
+    selfInfo.name = info.nickName;
+    selfInfo.sex = (info.gender == 1 ? 'n' : 'f');
+    selfInfo.logo = info.avatarUrl;
+    selfInfo.linked = true;
+
     that.setData({
-      selfInfo: self,
+      selfInfo: selfInfo,
       canUse: true
     });
-    wx.setStorageSync('selfInfo', self);
+    wx.setStorageSync('selfInfo', selfInfo);
     console.log(e.detail.userInfo)
     this.onLoad();
+    // this.onShow();
   },
   onChangeBar(event) {
     // event.detail 的值为当前选中项的索引
@@ -186,7 +253,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-
+    console.log('ready')
   },
 
 

@@ -1,7 +1,7 @@
 /* pages/index.wxss */
 @import "../template/card/card.wxss";
 @import "../template/tabbar/tabbar.wxss";
-/* @import "../template/sm-card/sm-card.wxss"; */
+@import "../template/sm-card/sm-card.wxss";
 
 page {
   font-family: "Muyao-Softbrush";
@@ -88,7 +88,10 @@ swiper {
 }
 
 #me-con .btn-con {
+  margin:0 auto;
   margin-top: 1rem;
+  text-align: center;
+  
 }
 
 #me-con .btn-con .btn-line {
@@ -96,9 +99,17 @@ swiper {
   margin: 0 15px 1rem 15px;
 }
 
-/* #me-con .btn-con .btn-line #dashed-line{
-
-} */
+#me-con .btn-con .sm-card-con{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  /* width: 24rem; */
+  /* overflow:auto;
+  word-break: break-all; 
+	word-wrap: break-word; */
+  
+}
 
 /* van-grid-item{
   border:1px solid #000;
@@ -117,3 +128,4 @@ swiper {
   line-height: 5rem;
   font-size: 20px;
 } */
+

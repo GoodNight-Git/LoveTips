@@ -40,6 +40,22 @@ App({
         }
       });
     });
+    // wx.loadFontFace({
+    //     family: that.globalData.fontFamily,
+    //   source: 'url(https://jzmstudio.github.io/LoveTips/fonts/Muyao-Softbrush.ttf)',
+    //     success(res) {
+    //       console.log('字体加载成功')
+    //       console.log(res.status)
+    //     },
+    //     fail: function(res) {
+    //       console.log('字体加载失败')
+    //       console.log(res.status)
+    //     },
+    //     complete: function(res) {
+    //       console.log('字体加载完成')
+    //       console.log(res.status)
+    //     }
+    //   });
 
   },
 

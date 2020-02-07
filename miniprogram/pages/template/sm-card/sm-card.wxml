@@ -1,7 +1,9 @@
 <!--pages/template/sm-card/sm-card.wxml-->
 <template name="smCardTemp">
-  <view class="smCard-con">
-    <van-image fit="cover" width="3rem" height="3rem" src="{{item.icon}}" />
-    <text>{{item.title}}</text>
-  </view>
+  <van-col span="8">
+    <view class="smCard-con">
+      <image width="3rem" height="3rem" src="{{item.icon}}" />
+      <text>{{item.title}}</text>
+    </view>
+  </van-col>
 </template>

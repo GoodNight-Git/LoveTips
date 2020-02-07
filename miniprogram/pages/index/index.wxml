@@ -1,7 +1,7 @@
 <!--pages/index.wxml-->
 <import src="../template/card/card.wxml" />
 <import src="../template/tabbar/tabbar.wxml" />
-<!-- <import src="../template/sm-card/sm-card.wxml" /> -->
+<import src="../template/sm-card/sm-card.wxml" />
 <view id="index-con">
   <van-toast id="van-toast" />
   <swiper current="{{currentData}}" bindchange='swiperChange'>
@@ -66,18 +66,18 @@
               <image src="{{selfInfo.logo}}" />
             </view>
             <!-- <view class="text-con"> -->
-              <text>{{selfInfo.name}}</text>
+            <text>{{selfInfo.name}}</text>
             <!-- </view> -->
           </view>
           <view class="love-con" wx:if="{{canUse&&selfInfo.linked}}">
-            <image style="width:3rem;height:3rem;" src="../../images/icon/love@50.svg"/>
+            <image style="width:3rem;height:3rem;" src="../../images/icon/love@50.svg" />
           </view>
           <view class="single-user-con" wx:if="{{canUse&&selfInfo.linked}}">
             <view class="logo-con">
               <image src="{{otherInfo.logo}}" />
             </view>
             <!-- <view class="text-con"> -->
-              <text>{{otherInfo.name}}</text>
+            <text>{{otherInfo.name}}</text>
             <!-- </view> -->
           </view>
           <button wx:if="{{!canUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
@@ -87,14 +87,19 @@
         <view class="btn-con">
           <view class="btn-line">
           </view>
-          <van-grid column-num="3" border="{{ false }}" gutter="{{ 15 }}">
+          <!-- <van-grid column-num="3" border="{{ false }}" gutter="{{ 15 }}"> -->
+          <van-row>
+          <!-- <view class="sm-card-con"> -->
             <block wx:for="{{settingList}}" wx:for-item="item" wx:for-index="index" wx:key="title">
-              <van-grid-item use-slot>
+              <template is="smCardTemp" data="{{item:item,index:index}}"></template>
+              <!-- <van-grid-item use-slot>
                 <van-image fit="cover" width="2.5rem" height="2.5rem" src="{{item.icon}}" />
                 <text>{{item.title}}</text>
-              </van-grid-item>
+              </van-grid-item> -->
             </block>
-          </van-grid>
+            <!-- </van-grid> -->
+          <!-- </view> -->
+        </van-row>
         </view>
 
       </view>
