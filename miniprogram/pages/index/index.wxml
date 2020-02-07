@@ -2,9 +2,10 @@
 <import src="../template/card/card.wxml" />
 <import src="../template/tabbar/tabbar.wxml" />
 <import src="../template/sm-card/sm-card.wxml" />
+<import src="../template/lg-card/lg-card.wxml" />
 <view id="index-con">
   <van-toast id="van-toast" />
-  <swiper current="{{currentData}}" bindchange='swiperChange'>
+  <swiper current="{{currentData}}">
     <swiper-item catchtouchmove="stopTouchMove">
       <van-tabs active="{{ topActive }}" sticky="true" animated="true" color="#ff9994" line-height="2px">
         <van-tab title="未完成" name="completing">
@@ -57,7 +58,16 @@
         </van-tab>
       </van-tabs>
     </swiper-item>
-    <swiper-item></swiper-item>
+    <swiper-item catchtouchmove="stopTouchMove">
+      <swiper circular="{{true}}" previous-margin='50px'  next-margin='50px' wx:if="{{ getCard_show }}" style="width:100%;height:35rem;">
+        <block wx:for="{{3}}" wx:for-item="item" wx:for-index="index">
+          <swiper-item class="swiper-item-con">
+            <template is="lgCardTemp" data="{{item:item,index:index,otherInfo:otherInfo}}"></template>
+          </swiper-item>
+        </block>
+
+      </swiper>
+    </swiper-item>
     <swiper-item catchtouchmove="stopTouchMove">
       <view id="me-con">
         <view class="user-con">
@@ -89,7 +99,7 @@
           </view>
           <!-- <van-grid column-num="3" border="{{ false }}" gutter="{{ 15 }}"> -->
           <van-row>
-          <!-- <view class="sm-card-con"> -->
+            <!-- <view class="sm-card-con"> -->
             <block wx:for="{{settingList}}" wx:for-item="item" wx:for-index="index" wx:key="title">
               <template is="smCardTemp" data="{{item:item,index:index}}"></template>
               <!-- <van-grid-item use-slot>
@@ -98,8 +108,8 @@
               </van-grid-item> -->
             </block>
             <!-- </van-grid> -->
-          <!-- </view> -->
-        </van-row>
+            <!-- </view> -->
+          </van-row>
         </view>
 
       </view>

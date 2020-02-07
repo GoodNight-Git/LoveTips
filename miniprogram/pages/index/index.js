@@ -29,6 +29,7 @@ Page({
     settingList:[],
     popup_show: false,
     canUse: false, //判断是否授权登陆
+    getCard_show:false//控制抽卡是否出现
     // canIUse: wx.canIUse('button.open-type.getUserInfo')
     // fontFamily: 'Muyao-Softbrush',
   },
@@ -178,8 +179,8 @@ Page({
     if (detail == 0 || detail == 2) {
       this.setData({
         popup_show: false,
-        active: event.detail,
-        currentData: event.detail,
+        // active: event.detail,
+        // currentData: event.detail,
       });
     }
   },
@@ -245,9 +246,12 @@ Page({
     })
   },
   toGetDream: function() {
-    wx.navigateTo({
-      url: '../getDream/getDream'
-    })
+    this.setData({
+      popup_show:false,
+      getCard_show:true,
+      active: 1,
+      currentData: 1
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

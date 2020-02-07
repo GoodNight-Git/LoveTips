@@ -2,6 +2,7 @@
 @import "../template/card/card.wxss";
 @import "../template/tabbar/tabbar.wxss";
 @import "../template/sm-card/sm-card.wxss";
+@import "../template/lg-card/lg-card.wxss";
 
 page {
   font-family: "Muyao-Softbrush";
@@ -38,7 +39,8 @@ swiper {
   text-align: center;
   margin-top: 2rem;
 }
-#me-con .user-con .single-user-con{
+
+#me-con .user-con .single-user-con {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,9 +48,10 @@ swiper {
   width: 7rem;
 }
 
-#me-con .user-con .love-con{
+#me-con .user-con .love-con {
   line-height: 5rem;
 }
+
 #me-con .user-con .logo-con {
   width: 5rem;
   height: 5rem;
@@ -62,13 +65,15 @@ swiper {
   height: 5rem;
   border-radius: 50%;
 }
+
 /* #me-con .user-con  */
+
 #me-con .user-con text {
   font-size: 16px;
   font-weight: 600;
   color: #2c2c2c;
-  overflow:hidden;
-  text-overflow:ellipsis;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
 
@@ -88,10 +93,9 @@ swiper {
 }
 
 #me-con .btn-con {
-  margin:0 auto;
+  margin: 0 auto;
   margin-top: 1rem;
   text-align: center;
-  
 }
 
 #me-con .btn-con .btn-line {
@@ -99,16 +103,21 @@ swiper {
   margin: 0 15px 1rem 15px;
 }
 
-#me-con .btn-con .sm-card-con{
+#me-con .btn-con .sm-card-con {
   display: flex;
   flex-direction: row;
   align-items: center;
   text-align: center;
-  /* width: 24rem; */
-  /* overflow:auto;
+  /* width: 24rem; *//* overflow:auto;
   word-break: break-all; 
 	word-wrap: break-word; */
-  
+}
+
+.swiper-item-con {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
 }
 
 /* van-grid-item{

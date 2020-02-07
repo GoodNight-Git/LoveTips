@@ -1,0 +1,13 @@
+<template name="lgCardTemp">
+
+    <view class="lgCard-con" style="background-color:#fff;">
+      <view class="dashed-con">
+       <image src="../../images/icon/{{otherInfo.sex=='m'?'male':'female'}}@50.svg" />
+       <text class="num-text">{{item+1}}</text>
+       <view class="choose-btn">
+       <text>就它了</text>
+       </view>
+      </view>
+    </view>
+
+</template>

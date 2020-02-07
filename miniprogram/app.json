@@ -27,7 +27,8 @@
     "van-grid": "dist/grid/index",
     "van-grid-item": "dist/grid-item/index",
     "van-row": "dist/row/index",
-    "van-col": "dist/col/index"
+    "van-col": "dist/col/index",
+    "van-overlay": "dist/overlay/index"
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"
