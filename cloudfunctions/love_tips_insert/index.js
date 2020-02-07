@@ -35,12 +35,21 @@ exports.main = async (event, context) => {
       pick_time : db.serverDate(),
       complete_time : db.serverDate()
     }
-  })
+  }).then(
+    res => {
+      console.log('suc'+res._id)
+      this._id = res._id
+    },
+    err => {
+      console.log('fail')
+    }
+  )
 
   return {
     event,
     openid: wxContext.OPENID,
     appid: wxContext.APPID,
     unionid: wxContext.UNIONID,
+    tipid: this._id
   }
 }
