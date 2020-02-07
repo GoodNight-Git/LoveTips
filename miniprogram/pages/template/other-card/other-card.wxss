@@ -1,0 +1,48 @@
+page{
+  align-items: center;
+}
+#otherCard-con{
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  /* width: 100%; */
+  margin-top:0.5rem;
+}
+
+#otherCard-con .content-con{
+  display: flex;
+  flex-direction: row;
+  align-items: right;
+  border:2px solid #040404;
+}
+#otherCard-con .content-con .image-con{
+  align-items: center;
+  padding:0.5rem 1rem;
+}
+
+#otherCard-con .content-con .text-con{
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+  text-align: right;
+  width: 12.5rem;
+  padding:0.5rem;
+}
+#otherCard-con .content-con .text-con .time{
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1rem;
+  color:#bebebe;
+}
+#otherCard-con .content-con .text-con .name{
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.8rem;
+  color:#040404;
+}
+#otherCard-con .content-con .text-con .price{
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1rem;
+  color:#ed556a;
+}

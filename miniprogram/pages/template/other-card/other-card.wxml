@@ -1,0 +1,19 @@
+<template name="otherCardTemp">
+
+  <view id="otherCard-con">
+    <view class="content-con" style="background-color:{{item.color}}">
+      <view class="icon-con">
+        <van-image fit="cover" width="2.5rem" height="2.5rem" src="../../images/icon/male@50.svg" />
+      </view>
+      <view class="text-con">
+        <text class="time">{{item.time}}</text>
+        <text class="name">{{item.name}}</text>
+        <text class="price">￥{{item.price}}</text>
+      </view>
+      <view class="image-con">
+        <van-image round fit="cover" width="4rem" height="4rem" src="{{item.images[0]}}" />
+      </view>
+    </view>
+  </view>
+
+</template>

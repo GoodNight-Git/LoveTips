@@ -24,7 +24,7 @@
       custom-class="van-tabbar-item__info"
     />
   </view>
-  <view class="van-tabbar-item__text">
+  <view class="van-tabbar-item__text" style="margin-left:3px;margin-bottom:5px;line-height:30px;">
     <slot />
   </view>
 </view>

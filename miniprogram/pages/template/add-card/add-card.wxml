@@ -1,0 +1,5 @@
+<template name="addCardTemp">
+  <view id="addCard-con">
+    <text>+添加一个愿望</text>
+  </view>
+</template>

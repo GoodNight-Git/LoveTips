@@ -3,14 +3,21 @@
     "pages/index/index"
   ],
   "window": {
-    "backgroundColor": "#eea2a4",
+    "backgroundColor": "#ff9994",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#eea2a4",
+    "navigationBarBackgroundColor": "#ff9994",
     "navigationBarTitleText": "爱的心愿贴",
     "navigationBarTextStyle": "white"
   },
   "usingComponents": {
-    "van-image": "dist/image/index"
+    "van-image": "dist/image/index",
+    "van-tab": "dist/tab/index",
+    "van-tabs": "dist/tabs/index",
+    "van-tabbar": "dist/tabbar/index",
+    "van-tabbar-item": "dist/tabbar-item/index",
+    "van-cell": "dist/cell/index",
+    "van-cell-group": "dist/cell-group/index",
+    "van-swipe-cell": "dist/swipe-cell/index"
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"
