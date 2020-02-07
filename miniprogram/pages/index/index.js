@@ -1,6 +1,7 @@
 // pages/index.js
 var dataList = require('../../config/example.js');
 var colorsList = require('../../config/color.js');
+var settingList = require('../../config/setting.js');
 import Toast from '../../dist/toast/toast';
 import {io_manager} from '../../logic/io_manager.js';
 Page({
@@ -11,10 +12,12 @@ Page({
   data: {
     topActive: "completing", //上面标签栏
     active: 0, //下面标签页
+    currentData: 0,
     imageURL: "../../images/logo.jpg",
     exampleData: dataList.dataExampleList,
     selfInfo: dataList.selfInfo,
     colorsData: colorsList.colors,
+    settingList:settingList.settings,
     popup_show:false
     // fontFamily: 'Muyao-Softbrush',
   },
@@ -30,15 +33,15 @@ Page({
     var detail = event.detail;
     
     this.setData({
-      active: event.detail
+      active: event.detail,
+      currentData: event.detail,
     });
-    if(detail==1){
-      var popup_show = this.data.popup_show;
-      
-    } else if (detail == 2){
-      wx.redirectTo({
-        url: '../me/me'
-      })
+    if (detail == 0 || detail == 2){
+      this.setData({
+        popup_show:false,
+        active: event.detail,
+        currentData: event.detail,
+      });
     }
   },
   onOpen(event) {
@@ -61,6 +64,11 @@ Page({
         break;
     }
   },
+  //取消swiper的滑动操作
+  stopTouchMove(event){
+    return false;
+  },
+  //点击右上角头像
   sexToast:function(){
     var self = this.data.selfInfo.sex;
     if(self=="male"){
@@ -69,9 +77,11 @@ Page({
       Toast('这是他的心愿喔~');
     }
   },
+  //点击右下角花朵图像
   completedToast:function(){
     Toast('这是一个已完成的心愿~');
   },
+  //点击下方中间添加按钮
   addClick:function(){
     var that = this;
     var popup_show = this.data.popup_show;
@@ -80,7 +90,8 @@ Page({
     })
     if (this.data.popup_show == false) {
       that.setData({
-        active: 0
+        active: 0,
+        currentData:0
       });
     }
   },

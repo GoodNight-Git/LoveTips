@@ -1,92 +1,56 @@
 <!--pages/index.wxml-->
 <import src="../template/card/card.wxml" />
+<import src="../template/tabbar/tabbar.wxml" />
+<import src="../template/sm-card/sm-card.wxml" />
 <view id="index-con">
   <van-toast id="van-toast" />
-  <van-tabs active="{{ topActive }}" sticky="true" animated="true" color="#ff9994" line-height="2px">
-
-    <van-tab title="未完成" name="completing">
-      <block wx:for="{{exampleData}}" wx:for-item="item" wx:for-index="index" wx:key="id">
-        <view wx:if="{{item.completed==0}}">
-          <template is="cardTemp" data="{{item:item,index:index,selfInfo:selfInfo}}"></template>
-        </view>
-      </block>
-      <!-- <view class="addCard-con">
+  <swiper current="{{currentData}}" bindchange='swiperChange'>
+    <swiper-item catchtouchmove="stopTouchMove">
+      <van-tabs active="{{ topActive }}" sticky="true" animated="true" color="#ff9994" line-height="2px">
+        <van-tab title="未完成" name="completing">
+          <block wx:for="{{exampleData}}" wx:for-item="item" wx:for-index="index" wx:key="id">
+            <view wx:if="{{item.completed==0}}">
+              <template is="cardTemp" data="{{item:item,index:index,selfInfo:selfInfo}}"></template>
+            </view>
+          </block>
+          <!-- <view class="addCard-con">
         <text>+添加我的愿望</text>
       </view> -->
-    </van-tab>
-    <!-- <van-tab title="{{selfInfo.sex=='male'?'她':'他'}}的" name="your"> -->
-    <van-tab title="已完成" name="completed">
-      <block wx:for="{{exampleData}}" wx:for-item="item" wx:for-index="index" wx:key="id">
-        <view wx:if="{{item.completed==1}}">
-          <template is="cardTemp" data="{{item:item,index:index,selfInfo:selfInfo}}"></template>
-        </view>
-      </block>
-      <!-- <view class="addCard-con">
+        </van-tab>
+        <!-- <van-tab title="{{selfInfo.sex=='male'?'她':'他'}}的" name="your"> -->
+        <van-tab title="已完成" name="completed">
+          <block wx:for="{{exampleData}}" wx:for-item="item" wx:for-index="index" wx:key="id">
+            <view wx:if="{{item.completed==1}}">
+              <template is="cardTemp" data="{{item:item,index:index,selfInfo:selfInfo}}"></template>
+            </view>
+          </block>
+          <!-- <view class="addCard-con">
         <text>+抽取{{selfInfo.sex=='male'?'她':'他'}}的愿望</text>
       </view> -->
-    </van-tab>
-    <van-tab title="全部" name="all">
-      <block wx:for="{{exampleData}}" wx:for-item="item" wx:for-index="index" wx:key="id">
-        <template is="cardTemp" data="{{item:item,index:index,selfInfo:selfInfo}}"></template>
-      </block>
-      <!-- <view class="addCard-con">
+        </van-tab>
+        <van-tab title="全部" name="all">
+          <block wx:for="{{exampleData}}" wx:for-item="item" wx:for-index="index" wx:key="id">
+            <template is="cardTemp" data="{{item:item,index:index,selfInfo:selfInfo}}"></template>
+          </block>
+          <!-- <view class="addCard-con">
         <text>+添加一个愿望</text>
       </view> -->
-    </van-tab>
-  </van-tabs>
-  <van-popup show="{{ popup_show }}" round position="bottom" custom-style="height: 35%;bottom:50px;border-top:2px solid #2c2c2c;border-radius:1.5rem 1.5rem 0 0;" bind:close="onPopupClose">
-    <view class="dreamCard-con">
-      <view class="newDream-con {{selfInfo.sex=='male'?'male-con':'female-con'}}" bindtap="toAddDream">
-        <view class="sex-con male-icon" wx:if="{{selfInfo.sex=='male'}}">
-          <van-image fit="cover" width="3rem" height="3rem" src="../../images/icon/male@50.svg" bindtap="sexToast" />
-        </view>
-        <view class="sex-con" wx:else>
-          <van-image fit="cover" width="3.5rem" height="3.5rem" src="../../images/icon/female@50.svg" bindtap="sexToast" />
-        </view>
-        <text>
-          添加
-        </text>
-        <text>
-        我的愿望
-        </text>
-      </view>
-      <view class="newDream-con {{selfInfo.sex=='female'?'male-con':'female-con'}} {{selfInfo.linked==0?'noDream-con':''}}" bindtap="toGetDream">
-        <view class="sex-con male-icon" wx:if="{{selfInfo.sex=='female'&&selfInfo.linked==1}}">
-          <van-image fit="cover" width="3rem" height="3rem" src="../../images/icon/male@50.svg" bindtap="sexToast" />
-        </view>
-        <view class="sex-con" wx:elif="{{selfInfo.sex=='male'&&selfInfo.linked==1}}">
-          <van-image fit="cover" width="3.5rem" height="3.5rem" src="../../images/icon/female@50.svg" bindtap="sexToast" />
-        </view>
-        <text wx:if="{{selfInfo.linked==1}}">
-            抽取
-          </text>
-        <text wx:if="{{selfInfo.linked==1}}">
-          {{selfInfo.sex=='male'?'她':'他'}}的愿望
-          </text>
-      </view>
+        </van-tab>
+      </van-tabs>
+    </swiper-item>
+    <swiper-item></swiper-item>
+    <swiper-item catchtouchmove="stopTouchMove">
+      <van-grid column-num="3" border="{{ false }}" gutter="{{ 15 }}">
+        <block wx:for="{{settingList}}" wx:for-item="item" wx:for-index="index" wx:key="title">
+          <van-grid-item use-slot>
+          <van-image fit="cover" width="2.5rem" height="2.5rem" src="{{item.icon}}" />
+            <text>{{item.title}}</text>
+          </van-grid-item>
+        </block>
 
-    </view>
+      </van-grid>
 
-  </van-popup>
-
-  <van-tabbar active="{{ active }}" active-color="#ff9994" inactive-color="#bebebe" bind:change="onChangeBar">
-
-    <van-tabbar-item>
-      <image slot="icon" src="../../images/icon/tips@30.svg" mode="aspectFit" style="width: 30px; height: 30px;" />
-      <image slot="icon-active" src="../../images/icon/tips_a@30.svg" mode="aspectFit" style="width: 30px; height: 30px;" />心愿
-    </van-tabbar-item>
-    <van-tabbar-item id="add-btn" bindtap="addClick" style="padding-top:-1rem;">
-      <view class="other-con">
-        <image id="{{popup_show?'add-img-a':'add-img'}}" src="../../images/icon/add{{popup_show?'_a':''}}@30.svg" mode="aspectFit" style="width: 50px; height: 50px;margin:0;" />
-      </view>
-      <!-- <image slot="icon-active" src="../../images/icon/add_a@30.svg" mode="aspectFit" style="width: 50px; height: 50px;margin:0;" /> -->
-    </van-tabbar-item>
-    <van-tabbar-item>
-      <image slot="icon" src="../../images/icon/me@30.svg" mode="aspectFit" style="width: 30px; height: 30px;" />
-      <image slot="icon-active" src="../../images/icon/me_a@30.svg" mode="aspectFit" style="width: 30px; height: 30px;" /> 我的
-    </van-tabbar-item>
-
-  </van-tabbar>
-
+    </swiper-item>
+  </swiper>
+  <template is="tabbarTemp" data="{{active:active,popup_show:popup_show,selfInfo:selfInfo}}"></template>
 </view>
-

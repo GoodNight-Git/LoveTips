@@ -1,0 +1,5 @@
+<!--pages/more/more.wxml-->
+<import src="../template/tabbar/tabbar.wxml" />
+<view id="more-con">
+ <template is="tabbarTemp" data="{{active:active,popup_show:popup_show,selfInfo:selfInfo}}"></template>
+</view>

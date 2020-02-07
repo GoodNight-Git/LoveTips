@@ -3,7 +3,7 @@
     "pages/index/index",
     "pages/addDream/addDream",
     "pages/getDream/getDream",
-    "pages/me/me"
+    "pages/more/more"
   ],
   "window": {
     "backgroundColor": "#ff9994",
@@ -23,7 +23,9 @@
     "van-swipe-cell": "dist/swipe-cell/index",
     "van-popup": "dist/popup/index",
     "van-toast": "dist/toast/index",
-    "van-uploader": "dist/uploader/index"
+    "van-uploader": "dist/uploader/index",
+    "van-grid": "dist/grid/index",
+    "van-grid-item": "dist/grid-item/index"
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"
