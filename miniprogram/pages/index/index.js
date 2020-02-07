@@ -1,6 +1,8 @@
 // pages/index.js
 var dataList = require('../../config/example.js');
 var colorsList = require('../../config/color.js');
+// var io_manager = require('../../logic/io_manager.js');
+import {io_manager} from '../../logic/io_manager.js';
 Page({
 
   /**
@@ -13,32 +15,36 @@ Page({
     exampleData: dataList.dataExampleList,
     selfInfo: dataList.selfInfo,
     colorsData: colorsList.colors,
-    fontFamily: 'Bitstream Vera Serif Bold',
+    // fontFamily: 'Muyao-Softbrush',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    wx.loadFontFace({
-      family: this.data.fontFamily,
-      source: 'url("https://github.com/JzmStudio/LoveTips/raw/master/fonts/Muyao-Softbrush.ttf")',
-      success(res) {
-        console.log('成功')
-        console.log(res.status)
-      },
-      fail: function(res) {
-        console.log('失败')
-        console.log(res.status)
-      },
-      complete: function(res) {
-        console.log('完成')
-        console.log(res.status)
-      }
-    });
+    // var that = this;
+    // io_manager.getTempFileURL(io_manager.const_id.font_path).then(res=>{
+    //   wx.loadFontFace({
+    //     family: that.data.fontFamily,
+    //     source: 'url(' + res + ')',
+    //     success(res) {
+    //       console.log('成功')
+    //       console.log(res.status)
+    //     },
+    //     fail: function (res) {
+    //       console.log('失败')
+    //       console.log(res.status)
+    //     },
+    //     complete: function (res) {
+    //       console.log('完成')
+    //       console.log(res.status)
+    //     }
+    //   });
+    // });
   },
-  onChange(event) {
+  onChangeBar(event) {
     // event.detail 的值为当前选中项的索引
+    console.log(event.detail)
     this.setData({
       active: event.detail
     });

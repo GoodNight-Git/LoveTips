@@ -2,7 +2,7 @@
 @import "../template/card/card.wxss";
 @import "../template/add-card/add-card.wxss";
 page{
-  font-family: "Bitstream Vera Serif Bold";
+  font-family: "Muyao-Softbrush";
   background-color: #faeeea;
 }
 #index-con{

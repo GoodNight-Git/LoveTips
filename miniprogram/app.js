@@ -1,4 +1,5 @@
 //app.js
+import { io_manager } from 'logic/io_manager.js';
 App({
   onLaunch: function () {
     
@@ -15,6 +16,27 @@ App({
       })
     }
 
-    this.globalData = {}
+    this.globalData = {
+      fontFamily: 'Muyao-Softbrush',
+    }
+    var that = this;
+    io_manager.getTempFileURL(io_manager.const_id.font_path).then(res => {
+      wx.loadFontFace({
+        family: that.globalData.fontFamily,
+        source: 'url(' + res + ')',
+        success(res) {
+          console.log('字体加载成功')
+          console.log(res.status)
+        },
+        fail: function (res) {
+          console.log('字体加载失败')
+          console.log(res.status)
+        },
+        complete: function (res) {
+          console.log('字体加载完成')
+          console.log(res.status)
+        }
+      });
+    });
   }
 })

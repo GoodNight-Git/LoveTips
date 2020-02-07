@@ -32,7 +32,7 @@
       </view>
     </van-tab>
   </van-tabs>
-  <van-tabbar active="{{ active }}" active-color="#ff9994" inactive-color="#bebebe" bind:change="onChange">
+  <van-tabbar active="{{ active }}" active-color="#ff9994" inactive-color="#bebebe" bind:change="onChangeBar">
     <van-tabbar-item>
       <image slot="icon" src="../../images/icon/tips@30.svg" mode="aspectFit" style="width: 30px; height: 30px;" />
       <image slot="icon-active" src="../../images/icon/tips_a@30.svg" mode="aspectFit" style="width: 30px; height: 30px;" />心愿
