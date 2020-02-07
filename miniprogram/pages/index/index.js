@@ -22,32 +22,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    // var that = this;
-    // io_manager.getTempFileURL(io_manager.const_id.font_path).then(res=>{
-    //   wx.loadFontFace({
-    //     family: that.data.fontFamily,
-    //     source: 'url(' + res + ')',
-    //     success(res) {
-    //       console.log('成功')
-    //       console.log(res.status)
-    //     },
-    //     fail: function (res) {
-    //       console.log('失败')
-    //       console.log(res.status)
-    //     },
-    //     complete: function (res) {
-    //       console.log('完成')
-    //       console.log(res.status)
-    //     }
-    //   });
-    // });
   },
   onChangeBar(event) {
     // event.detail 的值为当前选中项的索引
-    console.log(event.detail)
+    var detail = event.detail;
     this.setData({
       active: event.detail
     });
+    if(detail==1){
+      wx.redirectTo({
+        url: ''
+      })
+    } else if (detail == 2){
+      wx.redirectTo({
+        url: ''
+      })
+    }
   },
   onOpen(event) {
     const {

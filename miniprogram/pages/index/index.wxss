@@ -1,6 +1,5 @@
 /* pages/index.wxss */
 @import "../template/card/card.wxss";
-@import "../template/add-card/add-card.wxss";
 page{
   font-family: "Muyao-Softbrush";
   background-color: #faeeea;

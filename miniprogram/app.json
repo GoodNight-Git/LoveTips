@@ -17,7 +17,8 @@
     "van-tabbar-item": "dist/tabbar-item/index",
     "van-cell": "dist/cell/index",
     "van-cell-group": "dist/cell-group/index",
-    "van-swipe-cell": "dist/swipe-cell/index"
+    "van-swipe-cell": "dist/swipe-cell/index",
+    "van-popup": "dist/popup/index"
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"

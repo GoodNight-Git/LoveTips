@@ -11,7 +11,8 @@ var list = [{
   name: "鬼鬼的衣服",
   price: 1200,
   comment: "这是一个测试的例子",
-  self: 1
+  self: 1,
+  completed:0
 }, {
   id: 2,
   time: "2020年1月14日 星期五",
@@ -19,23 +20,26 @@ var list = [{
   name: "白白的衣服",
   price: 220,
   comment: "这是一个测试的例子",
-  self: 0
+  self: 0,
+  completed: 0
 }, {
-  id: 1,
+  id: 3,
   time: "2020年1月14日 星期五",
   images: ["../../images/test3.jpg"],
   name: "周边",
   price: 20,
   comment: "这是一个测试的例子",
-  self: 1
+  self: 1,
+  completed: 1
 }, {
-  id: 2,
+  id: 4,
   time: "2020年1月14日 星期五",
   images: ["../../images/test4.jpg"],
   name: "YSL口红",
   price: 150,
   comment: "这是一个测试的例子",
-  self: 1
+  self: 1,
+  completed: 0
 }];
 var newList = [];
 list.forEach((item, index) => {
@@ -47,7 +51,8 @@ list.forEach((item, index) => {
     price: 0,
     comment: "",
     color: "",
-    self:1
+    self:1,
+    completed:0
   }
   temp.id = item.id;
   temp.time = item.time;
@@ -57,6 +62,7 @@ list.forEach((item, index) => {
   temp.comment = item.comment;
   temp.color = colorsList.colors[index % colorsList.colors.length];
   temp.self = item.self;
+  temp.completed = item.completed;
   newList.push(temp);
 })
 module.exports = {

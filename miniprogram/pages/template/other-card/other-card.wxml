@@ -1,19 +1,35 @@
 <template name="otherCardTemp">
-
-  <view id="otherCard-con">
-    <view class="content-con" style="background-color:{{item.color}}">
-      <view class="icon-con">
-        <van-image fit="cover" width="2.5rem" height="2.5rem" src="../../images/icon/male@50.svg" />
-      </view>
-      <view class="text-con">
-        <text class="time">{{item.time}}</text>
-        <text class="name">{{item.name}}</text>
-        <text class="price">￥{{item.price}}</text>
-      </view>
-      <view class="image-con">
-        <van-image round fit="cover" width="4rem" height="4rem" src="{{item.images[0]}}" />
+  <van-swipe-cell right-width="{{ 60 }}" left-width="{{ 60 }}">
+    <view slot="left">
+      <view class="slot-con">
+        <view class="slot-cell">
+          <van-image fit="cover" width="2rem" height="2rem" src="../../images/icon/completed@40.svg" />
+          <text class="completed-text">完成</text>
+        </view>
       </view>
     </view>
-  </view>
-
+    <view id="otherCard-con">
+      <view class="content-con" style="background-color:{{item.color}}">
+        <view class="icon-con">
+          <van-image fit="cover" width="2.5rem" height="2.5rem" src="../../images/icon/male@50.svg" />
+        </view>
+        <view class="text-con">
+          <text class="time">{{item.time}}</text>
+          <text class="name">{{item.name}}</text>
+          <text class="price">￥{{item.price}}</text>
+        </view>
+        <view class="image-con">
+          <van-image round fit="cover" width="4rem" height="4rem" src="{{item.images[0]}}" />
+        </view>
+      </view>
+    </view>
+    <view slot="right">
+      <view class="slot-con">
+        <view class="slot-cell">
+          <van-image fit="cover" width="2rem" height="2rem" src="../../images/icon/del@40.svg" />
+          <text class="del-text">删除</text>
+        </view>
+      </view>
+    </view>
+  </van-swipe-cell>
 </template>
