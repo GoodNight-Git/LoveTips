@@ -8,7 +8,7 @@ exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
   const db = cloud.database()
 
-  const collection = db.collection('tips_uncompleted')
+  const collection = db.collection('love-tips')
   await collection.doc(event._id).remove().then(
     res => {
       console.log('success delete ' + res.removed)
