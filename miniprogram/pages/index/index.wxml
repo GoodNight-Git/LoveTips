@@ -2,7 +2,7 @@
 <import src="../template/card/card.wxml" />
 <import src="../template/tabbar/tabbar.wxml" />
 <import src="../template/sm-card/sm-card.wxml" />
-<import src="../template/lg-card/lg-card.wxml" />
+<!-- <import src="../template/lg-card/lg-card.wxml" /> -->
 <view id="index-con">
   <van-toast id="van-toast" />
   <swiper current="{{currentData}}">
@@ -59,10 +59,43 @@
       </van-tabs>
     </swiper-item>
     <swiper-item catchtouchmove="stopTouchMove">
-      <swiper circular="{{true}}" previous-margin='50px'  next-margin='50px' wx:if="{{ getCard_show }}" style="width:100%;height:35rem;">
+      <swiper bindchange="getDreamSwiperChange" circular="{{true}}" previous-margin='60px' next-margin='60px' wx:if="{{ getCard_show }}">
         <block wx:for="{{3}}" wx:for-item="item" wx:for-index="index">
-          <swiper-item class="swiper-item-con">
-            <template is="lgCardTemp" data="{{item:item,index:index,otherInfo:otherInfo}}"></template>
+          <swiper-item class="swiper-item-con" item-id="{{index}}">
+            <!-- <view class="getCard-con"> -->
+            <view class="lgCard-con {{getDream_idx==index?(animation?'lgCard-1-1':'lgCard-1-0'):('lgCard-1-0-sm')}}">
+              <view class="dashed-con">
+                <image src="../../images/icon/{{otherInfo.sex=='m'?'male':'female'}}@50.svg" />
+                <text class="num-text">{{item+1}}</text>
+                <view class="choose-btn" bindtap="rotateFn" data-id="1" data-idx="{{index}}">
+                  <text>就它了</text>
+                </view>
+              </view>
+            </view>
+            <view class="lgCard-con lgCard-back {{getDream_idx==index?(!animation?'lgCard-2-0':'lgCard-2-1'):('lgCard-2-0-sm')}}" bindtap="rotateFn" data-id="2" data-idx="{{index}}">
+              <view class="nodashed-con">
+                <view class="back-img">
+                  <van-image fit="cover" width="480rpx" height="480rpx" src="{{otherDream.images}}" />
+                </view>
+                <view class="back-text">
+                  <text class="name-text">{{otherDream.name}}</text>
+                  <text class="price-text">大约￥{{otherDream.price}}</text>
+                  <text class="content-text">{{otherDream.comment}}</text>
+                </view>
+                <view class="back-btn">
+                  <view class="single-btn btn-l">
+                    不了不了
+                  </view>
+                  <view class="single-btn">
+                    包了包了
+                  </view>
+                </view>
+                <!-- <view class="back-tips">
+                <text class="tips-text">tips:下拉卡片，表示帮助{{others.sex=='m'?'他':'她'}}完成心愿。</text>
+                </view> -->
+              </view>
+            </view>
+            <!-- </view> -->
           </swiper-item>
         </block>
 
@@ -80,7 +113,7 @@
             <!-- </view> -->
           </view>
           <view class="love-con" wx:if="{{canUse&&selfInfo.linked}}">
-            <image style="width:3rem;height:3rem;" src="../../images/icon/love@50.svg" />
+            <image style="width:96rpx;height:96rpx;" src="../../images/icon/love@50.svg" />
           </view>
           <view class="single-user-con" wx:if="{{canUse&&selfInfo.linked}}">
             <view class="logo-con">

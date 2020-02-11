@@ -5,19 +5,19 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  width: 6rem;
-  height: 6rem;
+  width: 192rpx;
+  height: 192rpx;
   background-color: #fbdbc9;
-  border-radius: 1.5rem;
+  border-radius: 48rpx;
   border:2px solid #2c2c2c;
   margin:0 auto;
-  margin-bottom:1rem;
+  margin-bottom:32rpx;
 }
 .smCard-con image{
-  width: 3rem;
-  height: 3rem;
-  margin:0.5rem auto;
+  width: 96rpx;
+  height: 96rpx;
+  margin:16rpx auto;
 }
 .smCard-con text{
-  line-height: 1rem;
+  line-height: 32rpx;
 }

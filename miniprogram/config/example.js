@@ -1,10 +1,15 @@
 var colorsList = require('color.js');
-// var self = {
-//   name: 'SPY-xxx',
-//   sex: 'f',//f女，m男，u未知
-//   logo: "../../images/logo.jpg",
-//   linked: true
-// };
+var otherDream = {
+  id: 1,
+  createdTime: "2020年1月14日 星期五",
+  images: ["../../images/test1.jpg"],
+  name: "鬼鬼的衣服",
+  price: 1200,
+  comment: "这是一个测试的例子子这是一个测试的例子子这是一个测试的例子子这是一个测试的例子子这是一个测试的例子子这是一个测试的例子子这是一个测试的例子子这是一个测试的例子子这是一个测试的例子子这是一个测试的例子子",
+  self: true,
+  completed: false,
+  del: false
+}
 var others = {
   name:'JZM',
   sex:'m',
@@ -83,5 +88,6 @@ list.forEach((item, index) => {
 module.exports = {
   dataExampleList: newList,
   selfInfo: self,
-  otherInfo:others
+  otherInfo:others,
+  otherDream:otherDream
 }

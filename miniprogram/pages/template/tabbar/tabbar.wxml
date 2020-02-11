@@ -1,12 +1,12 @@
 <template name="tabbarTemp">
-  <van-popup show="{{ popup_show }}" round position="bottom" custom-style="height: 35%;bottom:50px;border-top:2px solid #2c2c2c;border-radius:1.5rem 1.5rem 0 0;" bind:close="onPopupClose">
+  <van-popup show="{{ popup_show }}" round position="bottom" custom-style="height: 480rpx;bottom:50px;border-top:2px solid #2c2c2c;border-radius:48rpx 48rpx 0 0;" bind:close="onPopupClose">
     <view class="dreamCard-con">
       <view class="newDream-con {{selfInfo.sex=='m'?'male-con':'female-con'}}" bindtap="toAddDream">
         <view class="sex-con male-icon" wx:if="{{selfInfo.sex=='m'}}">
-          <van-image fit="cover" width="3rem" height="3rem" src="../../images/icon/male@50.svg" bindtap="sexToast" />
+          <van-image fit="cover" width="96rpx" height="96rpx" src="../../images/icon/male@50.svg" />
         </view>
         <view class="sex-con" wx:else>
-          <van-image fit="cover" width="3.5rem" height="3.5rem" src="../../images/icon/female@50.svg" bindtap="sexToast" />
+          <van-image fit="cover" width="112rpx" height="112rpx" src="../../images/icon/female@50.svg" />
         </view>
         <text>
           添加
@@ -17,10 +17,10 @@
       </view>
       <view class="newDream-con {{otherInfo.sex=='m'?'male-con':'female-con'}} {{selfInfo.linked?'':'noDream-con'}}" bindtap="toGetDream">
         <view class="sex-con male-icon" wx:if="{{otherInfo.sex=='m'&&selfInfo.linked}}">
-          <van-image fit="cover" width="3rem" height="3rem" src="../../images/icon/male@50.svg" bindtap="sexToast" />
+          <van-image fit="cover" width="96rpx" height="96rpx" src="../../images/icon/male@50.svg" />
         </view>
         <view class="sex-con" wx:elif="{{otherInfo.sex=='f'&&selfInfo.linked}}">
-          <van-image fit="cover" width="3.5rem" height="3.5rem" src="../../images/icon/female@50.svg" bindtap="sexToast" />
+          <van-image fit="cover" width="112rpx" height="112rpx" src="../../images/icon/female@50.svg" />
         </view>
         <text wx:if="{{selfInfo.linked}}">
             抽取
@@ -35,17 +35,17 @@
   <van-tabbar active="{{ active }}" active-color="#ff9994" inactive-color="#bebebe" bind:change="onChangeBar">
 
     <van-tabbar-item>
-      <image slot="icon" src="../../images/icon/tips@30.svg" mode="aspectFit" style="width: 30px; height: 30px;" />
-      <image slot="icon-active" src="../../images/icon/tips_a@30.svg" mode="aspectFit" style="width: 30px; height: 30px;" />心愿
+      <image slot="icon" src="../../images/icon/tips@30.svg" mode="aspectFit" style="width: 60rpx; height: 60rpx;" />
+      <image slot="icon-active" src="../../images/icon/tips_a@30.svg" mode="aspectFit" style="width: 60rpx; height: 60rpx;" />心愿
     </van-tabbar-item>
-    <van-tabbar-item bindtap="addClick" style="padding-top:-1rem;">
+    <van-tabbar-item bindtap="addClick" style="padding-top:-32rpx;">
       <view class="other-con">
-        <image id="{{popup_show?'add-img-a':'add-img'}}" src="../../images/icon/add{{popup_show?'_a':''}}@30.svg" mode="aspectFit" style="width: 50px; height: 50px;margin:0;" />
+        <image id="{{popup_show?'add-img-a':'add-img'}}" src="../../images/icon/add{{popup_show?'_a':''}}@30.svg" mode="aspectFit" style="width: 100rpx; height: 100rpx;margin:0;" />
       </view>
     </van-tabbar-item>
     <van-tabbar-item>
-      <image slot="icon" src="../../images/icon/me@30.svg" mode="aspectFit" style="width: 30px; height: 30px;" />
-      <image slot="icon-active" src="../../images/icon/me_a@30.svg" mode="aspectFit" style="width: 30px; height: 30px;" /> 我的
+      <image slot="icon" src="../../images/icon/me@30.svg" mode="aspectFit" style="width: 60rpx; height: 60rpx;" />
+      <image slot="icon-active" src="../../images/icon/me_a@30.svg" mode="aspectFit" style="width: 60rpx; height: 60rpx;" /> 我的
     </van-tabbar-item>
   </van-tabbar>
 </template>

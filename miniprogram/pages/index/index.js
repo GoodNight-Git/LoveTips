@@ -12,6 +12,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    winH: wx.getSystemInfoSync().windowHeight,
+    winW: wx.getSystemInfoSync().windowWidth,
     topActive: "completing", //上面标签栏
     active: 0, //下面标签页
     currentData: 0,
@@ -24,12 +26,19 @@ Page({
       linked: false
     },
     otherInfo: dataList.otherInfo,
+    otherDream: dataList.otherDream,
     colorsData: colorsList.colors,
     // settingList: settingList.settings,
     settingList:[],
     popup_show: false,
     canUse: false, //判断是否授权登陆
-    getCard_show:false//控制抽卡是否出现
+    getCard_show:false,//控制抽卡是否出现
+    getDream_idx:0,//抽卡标签
+    animationMain: true,
+    animation:false
+    // animationBack: false
+    // animationMain: null,//正面
+    // animationBack: null,//背面
     // canIUse: wx.canIUse('button.open-type.getUserInfo')
     // fontFamily: 'Muyao-Softbrush',
   },
@@ -38,7 +47,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log('loading')
+    console.log('loading');
     var that = this;
     var res = wx.getStorageInfoSync();
     var otherInfo = this.data.otherInfo;
@@ -175,10 +184,12 @@ Page({
     this.setData({
       active: event.detail,
       currentData: event.detail,
+      getCard_show: false
     });
     if (detail == 0 || detail == 2) {
       this.setData({
         popup_show: false,
+        
         // active: event.detail,
         // currentData: event.detail,
       });
@@ -253,14 +264,84 @@ Page({
       currentData: 1
     });
   },
+  getDreamSwiperChange:function(e){
+    console.log(e)
+    this.setData({
+      getDream_idx:e.detail.current,
+      animation: false
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
     console.log('ready')
   },
+  //获取swiper高度
+  getHeight: function (e) {
+    console.log(e.detail)
+    var winWid = wx.getSystemInfoSync().windowWidth;
+    console.log(winWid);
+    // var winWid = wx.getSystemInfoSync().windowWidth - 2 * 50;//获取当前屏幕的宽度
+    // var imgh = e.detail.height;//图片高度
+    // var imgw = e.detail.width;
+    // var sH = winWid * imgh / imgw + "px"
+    // this.setData({
+    //   swiperH: sH//设置高度
+    // })
+  },
+  rotateFn(e) {
+    console.log(e)
+    var id = e.currentTarget.dataset.id;
+    var idx = e.currentTarget.dataset.idx;
+    var cur = this.data.getDream_idx;
+    var ani = this.data.animation;
+    this.setData({
+      animation:!ani
+    })
+    console.log(this.data.animation)
+    // if()
+    // this.animation_main = wx.createAnimation({
+    //   duration: 400,
+    //   timingFunction: 'linear'
+    // })
+    // this.animation_back = wx.createAnimation({
+    //   duration: 400,
+    //   timingFunction: 'linear'
+    // })
+    // 点击正面
 
-
+    if (id == 1) {
+      this.setData({
+        animationMain:false,
+        // animation:false
+        // animationBack:true
+      })
+      // this.animation_main.rotateY(180).step()
+      // this.animation_back.rotateY(0).step()
+      // this.setData({
+      //   animationMain: this.animation_main.export(),
+      //   animationBack: this.animation_back.export(),
+      // })
+    }
+    // 点击背面
+    else {
+      this.setData({
+        animationMain: true,
+        // animation: false
+        // animationBack: false
+      })
+      // this.animation_main.rotateY(0).step()
+      // this.animation_back.rotateY(-180).step()
+      // this.setData({
+      //   animationMain: this.animation_main.export(),
+      //   animationBack: this.animation_back.export(),
+      // })
+    }
+    
+    
+  },
 
   /**
    * 生命周期函数--监听页面隐藏

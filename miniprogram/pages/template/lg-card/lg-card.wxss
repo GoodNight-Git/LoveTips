@@ -1,6 +1,15 @@
+.getCard-con{
+  position: relative;
+  transform: translate(-50%,-50%);
+  -webkit-perspective: 1500;
+  -moz-perspective: 1500;
+}
 .lgCard-con {
-  width: 80%;
-  height: 80%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* width: 240px;
+  height: 450px; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,7 +17,22 @@
   border: 2px solid #2c2c2c;
   border-radius: 1.5rem;
   padding: 0.5rem;
-  margin: auto;
+  margin:0 auto;
+  /* top:-225px; */
+  backface-visibility: hidden;
+  transform: scale(0.8);
+  transition: transform 0.5s;
+}
+
+.lgCard-con-active {
+  /* transform: translateY(-50%); */
+  /* transform-origin: center center; */
+  transform: scale(1);
+  transition: transform 0.5s;
+}
+
+.lgCard-back {
+  transform: rotateY(-180deg);
 }
 
 .lgCard-con .dashed-con {

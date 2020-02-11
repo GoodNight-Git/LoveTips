@@ -42,7 +42,8 @@ App({
     });
     // wx.loadFontFace({
     //     family: that.globalData.fontFamily,
-    //   source: 'url(https://jzmstudio.github.io/LoveTips/fonts/Muyao-Softbrush.ttf)',
+    //   // source: 'url(https://jzmstudio.github.io/LoveTips/fonts/Muyao-Softbrush.ttf)',
+    //   source: 'url(https://fonts.googleapis.com/css?family= Ma + Shan + Zheng＆display = swap)',
     //     success(res) {
     //       console.log('字体加载成功')
     //       console.log(res.status)

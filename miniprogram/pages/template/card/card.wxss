@@ -5,7 +5,7 @@ page{
   display: flex;
   flex-direction: row;
   align-items: left;
-  margin-top:0.5rem;
+  margin-top:16rpx;
 }
 
 #card-con .content-con{
@@ -13,41 +13,41 @@ page{
   flex-direction: row;
   align-items: left;
   border:2px solid #2c2c2c;
-  border-radius:1.5rem;
+  border-radius:48rpx;
 }
 #card-con .content-con .image-con{
   align-items: center;
-  padding:0.5rem 1rem;
+  padding:16rpx 32rpx;
 }
 
 #card-con .content-con .text-con{
   display: flex;
   flex-direction: column;
   align-items: left;
-  width: 12.5rem;
-  padding:0.5rem;
+  width: 400rpx;
+  padding:16rpx;
 }
 #card-con .content-con .text-con .time{
-  font-size: 14px;
+  font-size: 28rpx;
   font-weight: 600;
-  line-height: 1rem;
+  line-height: 32rpx;
   color:#bebebe;
 }
 #card-con .content-con .text-con .name{
-  font-size: 18px;
+  font-size: 36rpx;
   font-weight: 600;
-  line-height: 2rem;
+  line-height: 64rpx;
   color:#2c2c2c;
 }
 #card-con .content-con .text-con .price{
-  font-size: 14px;
+  font-size: 28rpx;
   font-weight: 600;
-  line-height: 1rem;
+  line-height: 32rpx;
   color:#ed556a;
 }
 #card-con .content-con .icon-con{
   position: relative;
-  width: 2.5rem;
+  width: 80rpx;
 }
 #card-con .content-con .icon-con .sex-icon{
   position: absolute;
@@ -70,13 +70,13 @@ page{
   align-items: center;
   text-align: center;
   height: 100%;
-  padding:0.5rem;
+  padding:16rpx;
 }
 .slot-con .slot-cell van-image{
-  margin-top:0.5rem;
+  margin-top:16rpx;
 }
 .slot-con .slot-cell text{
-  line-height: 1.5rem;
+  line-height: 48rpx;
 }
 .slot-con .slot-cell .completed-text{
   color:#ed556a;
