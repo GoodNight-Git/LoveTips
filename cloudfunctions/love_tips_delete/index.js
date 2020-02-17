@@ -3,12 +3,17 @@ const cloud = require('wx-server-sdk')
 
 cloud.init()
 
-// 云函数入口函数
+/**
+ * 删除指定id的愿望
+ * ---------in-----------
+ * _id      愿望的id
+ */
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
   const db = cloud.database()
 
   const collection = db.collection('love-tips')
+  this.remove_num = 0
   await collection.doc(event._id).remove().then(
     res => {
       console.log('success delete ' + res.removed)

@@ -4,7 +4,10 @@ const cloud = require('wx-server-sdk')
 cloud.init()
 
 /**
- * 获取所给open_id对应的用户的所有愿望
+ * 在登陆后同步用户数据，只获取前100条
+ * -------output---------
+ * tip_list   愿望列表
+ * is_success
  */
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
@@ -15,11 +18,16 @@ exports.main = async (event, context) => {
   const LIMIT_NUM = 100
   try {
     var data = await collection.where(
-      {
-        self_id: event.open_id
-      }
-    ).get()
-    
+      db.command.or([
+        {
+          self_id: wxContext.OPENID
+        },
+        {
+          picker_id: wxContext.OPENID
+        }
+      ])
+    ).limit(LIMIT_NUM).get()
+
     return {
       tip_list: data,
       is_success: true

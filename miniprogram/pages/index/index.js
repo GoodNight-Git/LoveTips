@@ -3,6 +3,7 @@ var dataList = require('../../config/example.js');
 var colorsList = require('../../config/color.js');
 var settingList = require('../../config/setting.js');
 import Toast from '../../dist/toast/toast';
+import {db_manager} from '../../logic/db_manager.js';
 import {
   io_manager
 } from '../../logic/io_manager.js';
@@ -160,6 +161,11 @@ Page({
     };
     console.log(selfInfo)
     var otherInfo = this.data.otherInfo;
+
+    console.log('------------------')
+    db_manager.login(e.detail.userInfo)
+    
+
     var info = e.detail.userInfo;
     console.log(e.detail.userInfo)
     selfInfo.name = info.nickName;

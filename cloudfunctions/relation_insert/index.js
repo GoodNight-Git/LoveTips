@@ -6,6 +6,12 @@ cloud.init()
 /**
  * 传入对方openid
  * other_id    string 对方的id
+ * 
+ * --------out---------
+ * relation_info: 对方的信息对象
+ * 包含如下：
+ * open_id      openid
+ * user_info    同微信UserInfo对象
  */
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
@@ -31,7 +37,7 @@ exports.main = async (event, context) => {
   catch (err) {
     console.error(err)
     return {
-      relation_id: undefined
+      relation_info: undefined
     }
   }
 }
