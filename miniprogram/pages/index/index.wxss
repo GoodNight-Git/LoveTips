@@ -244,15 +244,16 @@ swiper {
   margin-bottom: 15%;
 }
 
-.lgCard-con .dashed-con .choose-btn {
+.red-btn {
   width: 192rpx;
   height: 96rpx;
   background-color: #ee655f;
   border: 2px solid #2c2c2c;
   border-radius: 48rpx;
+  text-align: center;
 }
 
-.lgCard-con .dashed-con .choose-btn text {
+.red-btn text {
   line-height: 96rpx;
   font-size: 36rpx;
   font-weight: 600;
@@ -313,9 +314,10 @@ swiper {
   -webkit-line-clamp: 4;
   overflow: hidden;
 }
-.lgCard-con .nodashed-con .back-btn{
+
+.lgCard-con .nodashed-con .back-btn {
   position: absolute;
-  bottom:0;
+  bottom: 0;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -323,59 +325,70 @@ swiper {
   height: 90rpx;
   border-top: 2px dashed #2c2c2c;
 }
-.lgCard-con .nodashed-con .back-btn .single-btn{
+
+.lgCard-con .nodashed-con .back-btn .single-btn {
   width: 50%;
   line-height: 90rpx;
-  font-size:32rpx;
+  font-size: 32rpx;
   font-weight: 600;
 }
-.lgCard-con .nodashed-con .back-btn .btn-l{
-  border-right:2px dashed #2c2c2c;
-}
-/* .lgCard-con .nodashed-con .back-tips {
-  position: absolute;
-  bottom: 20rpx;
-  width: 420rpx;
-  text-align: left;
+
+.lgCard-con .nodashed-con .back-btn .btn-l {
+  border-right: 2px dashed #2c2c2c;
 }
 
-.lgCard-con .nodashed-con .tips-text {
-  color: #bebebe;
-  font-size: 24rpx;
-} */
+.addCard-con {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-/* .lgCard-con .nodashed-con .back-btn{
+.addCard-con .addCard-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 620rpx;
+  border: 2px solid #2c2c2c;
+  border-radius: 48rpx;
+  margin: 20rpx auto;
+  padding: 20rpx;
+}
+
+.addCard-con .addCard-content .addImg-con {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.addCard-con .addCard-content .addItem-con {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
+  margin-top: 30rpx;
 }
-.lgCard-con .nodashed-con .back-btn .choose-btn{
-  height: 96rpx;
-  background-color: #ee655f;
-  border: 4rpx solid #2c2c2c;
-  border-radius: 48rpx;
-}
-.lgCard-con .nodashed-con .back-btn .choose-btn text{
-  line-height: 96rpx;
+
+.addCard-con .addCard-content .addItem-con text {
   font-size: 36rpx;
   font-weight: 600;
-} */
-
-/* van-grid-item{
-  border:1px solid #000;
-} */
-
-/* .addCard-con {
-  width: 22.2rem;
-  height: 5rem;
-  background-color: #eee;
-  text-align: center;
-  margin-top: 0.5rem;
+  line-height: 40rpx;
 }
 
-.addCard-con text {
-  color: #bebebe;
-  line-height: 5rem;
-  font-size: 20px;
-} */
+.addCard-con .addCard-content .addItem-con input {
+  height: 60rpx;
+  line-height: 60rpx;
+  background-color: #fbdbc9;
+  padding: 10rpx 16rpx;
+  border-radius: 48rpx;
+  margin-top: 14rpx;
+}
+
+.addCard-con .addCard-content .addItem-con textarea{
+  height: 220rpx;
+  line-height: 60rpx;
+  background-color: #fbdbc9;
+  padding: 10rpx 16rpx;
+  border-radius: 48rpx;
+  margin-top: 14rpx;
+  margin-bottom:30rpx;
+}

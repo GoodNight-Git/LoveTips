@@ -3,7 +3,6 @@ var dataList = require('../../config/example.js');
 var colorsList = require('../../config/color.js');
 var settingList = require('../../config/setting.js');
 import Toast from '../../dist/toast/toast';
-import {db_manager} from '../../logic/db_manager.js';
 import {
   io_manager
 } from '../../logic/io_manager.js';
@@ -33,6 +32,7 @@ Page({
     settingList:[],
     popup_show: false,
     canUse: false, //判断是否授权登陆
+    addCard_show:false,//控制添加卡是否出现
     getCard_show:false,//控制抽卡是否出现
     getDream_idx:0,//抽卡标签
     animationMain: true,
@@ -161,11 +161,6 @@ Page({
     };
     console.log(selfInfo)
     var otherInfo = this.data.otherInfo;
-
-    console.log('------------------')
-    db_manager.login(e.detail.userInfo)
-    
-
     var info = e.detail.userInfo;
     console.log(e.detail.userInfo)
     selfInfo.name = info.nickName;
@@ -190,7 +185,8 @@ Page({
     this.setData({
       active: event.detail,
       currentData: event.detail,
-      getCard_show: false
+      getCard_show: false,
+      getDream_idx:0
     });
     if (detail == 0 || detail == 2) {
       this.setData({
@@ -258,9 +254,11 @@ Page({
     })
   },
   toAddDream: function() {
-    wx.navigateTo({
-      url: '../addDream/addDream'
-    })
+    this.setData({
+      popup_show: false,
+      addCard_show: true,
+      active: 1
+    });
   },
   toGetDream: function() {
     this.setData({

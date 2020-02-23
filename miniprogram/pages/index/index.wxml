@@ -59,6 +59,34 @@
       </van-tabs>
     </swiper-item>
     <swiper-item catchtouchmove="stopTouchMove">
+      <view wx:if="{{addCard_show}}" class="addCard-con">
+        <view class="addCard-content">
+          <view class="addImg-con">
+            <van-uploader file-list="{{ fileList }}" max-count="3" bind:after-read="afterRead" />
+          </view>
+          <view class="addItem-con">
+            <text>愿望名</text>
+            <input></input>
+          </view>
+          <view class="addItem-con">
+          <text>价格</text>
+          <input></input>
+          </view>
+          <view class="addItem-con">
+          <text>期待程度</text>
+          <view class="circle-btn">
+            
+          </view>
+          </view>
+          <view class="addItem-con">
+            <text>其他</text>
+            <textarea show-confirm-bar="{{false}}"></textarea>
+          </view>
+          <view class="red-btn">
+          <text>完成</text>
+          </view>
+        </view>
+      </view>
       <swiper bindchange="getDreamSwiperChange" circular="{{true}}" previous-margin='60px' next-margin='60px' wx:if="{{ getCard_show }}">
         <block wx:for="{{3}}" wx:for-item="item" wx:for-index="index">
           <swiper-item class="swiper-item-con" item-id="{{index}}">
@@ -67,7 +95,7 @@
               <view class="dashed-con">
                 <image src="../../images/icon/{{otherInfo.sex=='m'?'male':'female'}}@50.svg" />
                 <text class="num-text">{{item+1}}</text>
-                <view class="choose-btn" bindtap="rotateFn" data-id="1" data-idx="{{index}}">
+                <view class="red-btn" bindtap="rotateFn" data-id="1" data-idx="{{index}}">
                   <text>就它了</text>
                 </view>
               </view>
